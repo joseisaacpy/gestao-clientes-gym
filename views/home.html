@@ -3,22 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>Gym - Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <header>
-      <h1>Gym</h1>
+  <body class="bg-gray-900 text-white">
+    <!-- Cabeçalho -->
+    <header class="bg-red-800 p-4 shadow-md">
+      <h1 class="text-3xl font-bold text-center">Gym</h1>
     </header>
+
+    <!-- Seção principal -->
     <main>
-      <section>
-        <h1>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate
-          culpa rem alias dolore nesciunt laborum. Consectetur, sit inventore?
-          Laborum a deserunt at voluptatibus necessitatibus fugit possimus,
-          minus nam porro nisi.
-        </h1>
+      <section
+        class="relative w-full h-[80dvh] md:h-[100dvh] flex items-center justify-center bg-fixed bg-center bg-cover"
+        style="
+          background-image: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg');
+        "
+      >
+        <!-- Overlay escuro -->
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+
+        <!-- Texto centralizado -->
+        <div class="relative z-10 p-4 text-center">
+          <h2 class="text-3xl md:text-5xl font-extrabold animate-pulse">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          </h2>
+        </div>
       </section>
     </main>
+
+    <!-- Rodapé opcional -->
+    <footer class="bg-red-800 text-center p-4 mt-4">
+      <p class="text-sm">&copy; 2025 Gym. Todos os direitos reservados.</p>
+    </footer>
   </body>
 </html>
