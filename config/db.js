@@ -10,10 +10,10 @@ db.run(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     idade INTEGER,
-    data_nascimento TEXT,
+    data_nascimento DATE,
     email TEXT,
     telefone TEXT,
-    data_cadastro TEXT DEFAULT (date('now')) -- salva a data atual automaticamente
+    data_cadastro DATE DEFAULT (date('now')) -- salva a data atual automaticamente
     );
 `);
 

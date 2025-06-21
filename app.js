@@ -20,8 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "views")));
 
 // ROTAS
-// ROTA PRINCIPAL com arquivo login.html
-app.get("/", (req, res) => res.redirect("login.html"));
+// rota principal com arquivo home.html
+app.get("/", (req, res) => res.redirect("home.html"));
+// rota para login.html
+app.get("/login", (req, res) => res.redirect("login.html"));
 
 // OUVINTE DE SERVIDOR
 app.listen(port, () =>
