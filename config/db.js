@@ -17,4 +17,13 @@ db.run(`
     );
 `);
 
+// Cria tabela de adminstradores do sistema se nao existir
+db.run(`
+    CREATE TABLE IF NOT EXISTS administradores (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    usuario TEXT NOT NULL UNIQUE,
+    senha TEXT NOT NULL
+    );
+`);
+
 export default db;
