@@ -7,34 +7,132 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-gray-900 text-white">
-    <!-- Cabeçalho -->
-    <header class="bg-red-800 p-4 shadow-md">
-      <h1 class="text-3xl font-bold text-center">Gym</h1>
-    </header>
+    <!-- Header -->
+    <header class="bg-gray-900 text-white p-4 shadow-md">
+      <nav class="container mx-auto flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-2">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
+            alt="Logo"
+            class="w-8 h-8"
+          />
+          <span class="font-semibold text-lg">AcademiaFit</span>
+        </a>
 
-    <!-- Seção principal -->
+        <!-- Menu de Navegação (Desktop) -->
+        <ul class="hidden md:flex space-x-6 text-sm">
+          <li><a href="#" class="hover:text-red-400 transition">Início</a></li>
+          <li><a href="#" class="hover:text-red-400 transition">Planos</a></li>
+          <li><a href="#" class="hover:text-red-400 transition">Contato</a></li>
+        </ul>
+
+        <!-- Botão Mobile -->
+        <div class="md:hidden">
+          <button id="menu-btn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Menu Mobile (escondido por padrão) -->
+      <div id="mobile-menu" class="md:hidden hidden mt-4">
+        <ul class="flex flex-col space-y-2 text-sm">
+          <li><a href="#" class="hover:text-red-400 transition">Início</a></li>
+          <li><a href="#" class="hover:text-red-400 transition">Planos</a></li>
+          <li><a href="#" class="hover:text-red-400 transition">Contato</a></li>
+        </ul>
+      </div>
+    </header>
+    <!-- Conteúdo principal -->
     <main>
+      <!-- Hero -->
       <section
-        class="relative w-full h-[80dvh] md:h-[100dvh] flex items-center justify-center bg-fixed bg-center bg-cover"
+        class="w-full h-[80dvh] md:h-[100dvh] flex items-center justify-center bg-fixed bg-center bg-cover"
         style="
-          background-image: url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg');
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url('https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg');
         "
       >
-        <!-- Overlay escuro -->
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-
-        <!-- Texto centralizado -->
-        <div class="relative z-10 p-4 text-center">
-          <h2 class="text-3xl md:text-5xl font-extrabold animate-pulse">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        <div class="p-2 m-auto">
+          <h2 class="uppercase text-center text-3xl md:text-5xl font-bold">
+            O seu melhor
+            <span class="text-red-800 animate-pulse">equilíbrio</span> é
+            aqui<span class="text-red-800">!</span>
           </h2>
+          <p class="text-center font-semibold text-2xl">
+            A maior e melhor academia de José de Freitas - PI
+          </p>
         </div>
       </section>
+      <!-- About -->
     </main>
 
     <!-- Rodapé opcional -->
-    <footer class="bg-red-800 text-center p-4 mt-4">
-      <p class="text-sm">&copy; 2025 Gym. Todos os direitos reservados.</p>
+    <footer class="bg-red-800 text-center p-4 flex flex-col gap-2">
+      <img
+        src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
+        alt=""
+        class="w-12 h-12 m-auto"
+      />
+      <p class="text-sm font-bold">
+        &copy; 2025 Gym. Todos os direitos reservados.
+      </p>
+      <div id="redes" class="flex justify-center items-center">
+        <a href="#" class="mx-2">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg"
+            alt="Facebook"
+            class="w-6 h-6"
+          />
+        </a>
+        <a href="#" class="mx-2">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg"
+            alt="Facebook"
+            class="w-6 h-6"
+          />
+        </a>
+        <a href="#" class="mx-2">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg"
+            alt="Facebook"
+            class="w-6 h-6"
+          />
+        </a>
+        <a href="/login" class="mx-2">
+          <img
+            src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-original.svg"
+            alt="Facebook"
+            class="w-6 h-6"
+          />
+        </a>
+      </div>
     </footer>
+    <script>
+      // Script para abrir e fechar o menu mobile
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      btn.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
   </body>
 </html>
