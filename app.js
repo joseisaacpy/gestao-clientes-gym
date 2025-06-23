@@ -5,6 +5,8 @@ import db from "./config/db.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import alunoRouter from "./routers/alunosRoutes.js";
+import admRouter from "./routers/admsRoutes.js";
 
 // CONTANTES
 const app = express();
@@ -18,6 +20,9 @@ dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "views")));
+// rota dos alunos
+app.use("/alunos", alunoRouter);
+app.use("/adm", admRouter);
 
 // ROTAS
 // rota principal com arquivo home.html
