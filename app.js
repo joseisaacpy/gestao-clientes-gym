@@ -31,6 +31,10 @@ app.use("/login", loginRouter);
 app.get("/", (req, res) => res.redirect("home.html"));
 // rota para login.html
 app.get("/login", (req, res) => res.redirect("login.html"));
+// rota para o painel
+app.get("/painel", (req, res) => {
+  res.redirect("painel.html");
+});
 
 // OUVINTE DE SERVIDOR
 app.listen(port, () =>
