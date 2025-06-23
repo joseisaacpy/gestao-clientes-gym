@@ -10,7 +10,6 @@ router.post("/", (req, res) => {
   const aluno = req.body;
   if (
     !aluno.nome ||
-    !aluno.idade ||
     !aluno.data_nascimento ||
     !aluno.email ||
     !aluno.telefone

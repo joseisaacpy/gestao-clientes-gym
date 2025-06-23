@@ -3,16 +3,143 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Painel</title>
+    <title>Painel de Administração</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       src="https://kit.fontawesome.com/5432a0e64c.js"
       crossorigin="anonymous"
     ></script>
   </head>
+
   <body class="bg-gray-900 text-white">
-    <header></header>
-    <main></main>
-    <footer></footer>
+    <header class="p-4 bg-gray-800 shadow">
+      <h1 class="text-xl font-bold text-center">Painel de Administração</h1>
+    </header>
+
+    <main class="p-4 space-y-6">
+      <!-- Formulário de cadastro de aluno -->
+      <section class="bg-gray-800 p-4 rounded">
+        <h2 class="text-lg font-semibold mb-2">Cadastrar novo aluno</h2>
+        <form id="formAluno" class="space-y-2">
+          <input
+            type="text"
+            name="nome"
+            placeholder="Nome"
+            required
+            class="w-full p-2 text-black rounded"
+          />
+          <!-- <input
+            type="number"
+            name="idade"
+            placeholder="Idade"
+            required
+            class="w-full p-2 text-black rounded"
+          /> -->
+          <input
+            type="date"
+            name="data_nascimento"
+            required
+            class="w-full p-2 text-black rounded"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+            class="w-full p-2 text-black rounded"
+          />
+          <input
+            type="text"
+            name="telefone"
+            placeholder="Telefone"
+            required
+            class="w-full p-2 text-black rounded"
+          />
+          <button
+            type="submit"
+            class="w-full bg-red-600 hover:bg-red-700 py-2 rounded"
+          >
+            Cadastrar
+          </button>
+        </form>
+      </section>
+
+      <!-- Lista de alunos -->
+      <section class="bg-gray-800 p-4 rounded">
+        <h2 class="text-lg font-semibold mb-2">Alunos cadastrados</h2>
+        <ul id="listaAlunos" class="grid gap-2 sm:grid-cols-2"></ul>
+      </section>
+    </main>
+
+    <footer class="p-4 text-center text-sm text-white">
+      Painel de Administração - 2025
+    </footer>
+
+    <script>
+      // Fetch para listar alunos
+      async function carregarAlunos() {
+        const response = await fetch("/alunos");
+        const alunos = await response.json();
+
+        const lista = document.getElementById("listaAlunos");
+        lista.innerHTML = "";
+
+        if (alunos.length === 0 || alunos.message) {
+          lista.innerHTML = "<li>Nenhum aluno cadastrado.</li>";
+          return;
+        }
+
+        alunos.forEach((aluno) => {
+          const li = document.createElement("li");
+          li.className = "bg-gray-700 p-2 rounded w-[100%]";
+          li.innerHTML = `<div>
+          <p>${aluno.nome}</p>
+          <p>${aluno.email}</p>
+          <p>${aluno.telefone}</p>
+          <p>${aluno.data_nascimento}</p>
+          <p>${aluno.data_cadastro}</p>
+
+          <div class="flex gap-4">
+            <button onclick="deletarAluno(${aluno.id})" class="text-red-500 hover:text-red-700">
+                <i class="fas fa-trash"></i>
+            </button>
+            <button onclick="editarAluno(${aluno.id})" class="text-red-500 hover:text-red-700">
+            <i class="fas fa-edit"></i>
+            </button>
+            </div>
+          </div>
+        `;
+          lista.appendChild(li);
+        });
+      }
+
+      // Função para deletar aluno
+      async function deletarAluno(id) {
+        if (!confirm("Tem certeza que deseja deletar este aluno?")) return;
+
+        await fetch("/alunos/" + id, { method: "DELETE" });
+        carregarAlunos();
+      }
+
+      // Cadastro de aluno
+      const form = document.getElementById("formAluno");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
+        await fetch("/alunos", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        form.reset();
+        carregarAlunos();
+      });
+
+      // Carregar alunos ao abrir a página
+      carregarAlunos();
+    </script>
   </body>
 </html>

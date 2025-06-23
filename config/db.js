@@ -9,7 +9,7 @@ db.run(`
     CREATE TABLE IF NOT EXISTS alunos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
-    idade INTEGER,
+    idade INTEGER ,
     data_nascimento DATE,
     email TEXT,
     telefone TEXT,
