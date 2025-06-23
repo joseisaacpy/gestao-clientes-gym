@@ -7,6 +7,8 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import alunoRouter from "./routers/alunosRoutes.js";
 import admRouter from "./routers/admsRoutes.js";
+import loginRouter from "./routers/loginRoutes.js";
+import bodyParser from "body-parser";
 
 // CONTANTES
 const app = express();
@@ -16,13 +18,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // CONFIGURAÇÕES
 dotenv.config();
 
-// MIDDLEWARES
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// MIDDLEWARES E ROTAS
+app.use(bodyParser.urlencoded({ extended: false })); // Para ler dados de formulário (x-www-form-urlencoded)
+app.use(bodyParser.json()); // Para ler JSON
 app.use(express.static(path.join(__dirname, "views")));
-// rota dos alunos
 app.use("/alunos", alunoRouter);
 app.use("/adm", admRouter);
+app.use("/login", loginRouter);
 
 // ROTAS
 // rota principal com arquivo home.html
